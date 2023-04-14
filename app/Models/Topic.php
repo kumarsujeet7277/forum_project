@@ -29,4 +29,23 @@ class Topic extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+
+
+
+    
+    public static function topicValidation()
+    {
+        return[
+            'user_id' =>'required',
+            'title' => 'required',
+            'description' => 'required| min:500',
+            'content' => 'required',                 
+            'status' => [
+                'required',
+                Rule::in(['open', 'closed', 'archived']),   
+            ],
+            'views' => 'required|numeric',
+        ];   
+    } 
 }

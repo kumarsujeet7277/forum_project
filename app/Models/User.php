@@ -56,4 +56,34 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
+
+
+    public static function userValidation()
+    {
+        return[
+            'name' =>[
+                'required',
+                'regex:/^[\pL\s]+$/u',
+                'max:50',
+            ],
+            // alpha:ascii (for user only)
+          
+            'email' => ' email|required ',
+            'password' => [
+                'required',
+                'confirmed',
+                'regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/',
+            ],
+            
+            'avatar' => 'image | mimes:jpg,png',
+
+            // 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
+             
+            'role' => [
+                'required',
+                Rule::in(['user', 'moderator', 'admin']),   
+            ],
+        ];
+    }
 }

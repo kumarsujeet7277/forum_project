@@ -26,4 +26,17 @@ class Comment extends Model
     {
         return $this->belongsTo(Topic::class);
     }
+
+
+
+    public static function commentValidation()
+    {
+        return[
+            'user_id' =>'required',
+            'topic_id' => 'required',
+            'content' => 'required', 
+            'parent_id' => 'required',               
+            
+        ];  
+    }
 }
