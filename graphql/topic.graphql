@@ -12,10 +12,10 @@ type Topic {
     "Unique primary key."
     user_id: ID!
 
-    "Non-unique name."
+    
     title: String!
 
-    "Unique email address."
+    
     description: String!
 
     content: String!
@@ -23,6 +23,10 @@ type Topic {
     status: Status!
 
     views: Int!
+
+    user: User @belongsTo
+
+    comment: Comment @hasMany
 
    
 }

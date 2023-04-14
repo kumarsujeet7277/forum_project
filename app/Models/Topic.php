@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Comment;
 
 class Topic extends Model
 {
@@ -17,4 +19,14 @@ class Topic extends Model
         'status',
         'views',
     ];
+
+    public function user()
+    {
+       return $this->belongsTo(User::class);
+    }
+
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

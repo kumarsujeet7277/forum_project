@@ -18,6 +18,10 @@ type Comment {
     content: String!
 
     parent_id: ID!
+
+    user: User! @belongsTo
+
+    topic: Topic! @belongsTo
    
 }
 
