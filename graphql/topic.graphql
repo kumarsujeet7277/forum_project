@@ -32,6 +32,33 @@ type Topic {
 }
 
 
+extend type Mutation{
+  createTopic(
+    user_id: ID!,
+    title: String!,
+    description: String!,
+    content: String!,
+    status: Status!,
+  ): Topic @create
+
+  updateTopic(
+    id: ID!,
+    user_id: ID!,
+    title: String,
+    description: String,
+    content: String,
+    status: Status,
+  ): Topic @update
+
+
+  deleteTopic(
+    id: ID!, @eq
+  ): Topic @delete
+
+
+}
+
+
 enum Status {
   open,
   closed,
