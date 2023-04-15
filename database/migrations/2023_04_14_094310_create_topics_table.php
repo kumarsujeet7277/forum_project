@@ -19,9 +19,9 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('title');
             $table->longText('description')->nullable();
-            $table->string('content');
+            // $table->string('content');
             $table->enum('status', ['open', 'closed', 'archived'])->default('open');
-            $table->integer('views');
+            $table->integer('views')->nullable();
             $table->timestamps();
         });
     }

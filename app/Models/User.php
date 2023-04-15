@@ -47,15 +47,6 @@ class User extends Authenticatable
     ];
 
 
-    public function topic()
-    {
-        return $this->hasMany(Topic::class);
-    }
-
-    public function comment()
-    {
-        return $this->hasMany(Comment::class);
-    }
 
 
     public static function userValidation()
@@ -85,5 +76,16 @@ class User extends Authenticatable
                 Rule::in(['user', 'moderator', 'admin']),   
             ],
         ];
+    }
+
+    
+    public function topic()
+    {
+        return $this->hasMany(Topic::class);
+    }
+
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

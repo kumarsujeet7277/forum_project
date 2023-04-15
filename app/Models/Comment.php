@@ -17,16 +17,7 @@ class Comment extends Model
         'parent_id',
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function topic()
-    {
-        return $this->belongsTo(Topic::class);
-    }
-
+ 
 
 
     public static function commentValidation()
@@ -39,4 +30,18 @@ class Comment extends Model
             
         ];  
     }
+
+
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function topic()
+    {
+        return $this->belongsTo(Topic::class);
+    }
+
 }

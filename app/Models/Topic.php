@@ -15,20 +15,11 @@ class Topic extends Model
         'user_id',
         'title',
         'description',
-        'content',
         'status',
         'views',
     ];
 
-    public function user()
-    {
-       return $this->belongsTo(User::class);
-    }
-
-    public function comment()
-    {
-        return $this->hasMany(Comment::class);
-    }
+  
 
 
 
@@ -40,7 +31,7 @@ class Topic extends Model
             'user_id' =>'required',
             'title' => 'required',
             'description' => 'required| min:500',
-            'content' => 'required',                 
+                         
             'status' => [
                 'required',
                 Rule::in(['open', 'closed', 'archived']),   
@@ -48,4 +39,17 @@ class Topic extends Model
             'views' => 'required|numeric',
         ];   
     } 
+
+
+
+
+    public function user()
+    {
+       return $this->belongsTo(User::class);
+    }
+
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
